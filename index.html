@@ -32,23 +32,32 @@
     .role { color:#555c60; }
     .affiliation { margin-top:3px !important; }
     .location { margin-top:12px !important; color:var(--muted); font-size:13px !important; }
-    .profile-links { list-style:none; padding:0; margin:23px 0 0; font-size:13px; }
-    .profile-links li { margin-bottom:8px; }
-    .profile-links a { display:inline-block; }
+    .profile-links { display:flex; gap:10px; list-style:none; padding:0; margin:19px 0 0; }
+    .profile-links li { margin:0; }
+    .profile-links a { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border:1px solid #dce3e8; border-radius:6px; color:#48657c; }
+    .profile-links a:hover { background:#f1f5f8; border-color:#aabecb; text-decoration:none; color:#243f55; }
+    .profile-links svg { display:block; width:21px; height:21px; }
     main { min-width:0; }
     section + section { margin-top:37px; }
     #about,#news { max-width:880px; font-size:14.5px; line-height:1.6; }
-    #about h2,#news h2 { font-size:20px; padding-bottom:7px; margin-bottom:10px; line-height:1.3; }
-    #about p { margin-bottom:7px; }
+    #about h2,#news h2 { padding-bottom:8px; margin-bottom:12px; }
+    #about p { max-width:78ch; margin-bottom:9px; }
+    #about .about-intro { font-size:16px; line-height:1.6; color:#343d44; }
+    #about .about-research { font-size:14.5px; line-height:1.65; color:#59636c; margin-bottom:0; }
+    #about strong { font-weight:600; }
     #news { margin-top:24px; }
     #publications { margin-top:28px; }
     h2 { font-size:22px; line-height:1.4; font-weight:600; letter-spacing:-.35px; padding-bottom:9px; margin:0 0 16px; border-bottom:1px solid var(--line); }
+    main > section > h2 { font-size:16px; font-weight:650; letter-spacing:1.35px; text-transform:uppercase; color:#364450; }
     p { margin:0 0 13px; }
-    .interests { padding-left:18px; margin:7px 0 0; }
-    .interests li { padding-left:1px; margin-bottom:1px; line-height:1.55; }
-    .news-list { list-style:none; margin:0; padding:0; }
-    .news-list li { display:grid; grid-template-columns:42px minmax(0,1fr); gap:12px; font-size:14px; line-height:1.6; }
-    .news-list time { color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; padding-top:2px; }
+    .news-list { position:relative; list-style:none; margin:0; padding:0; }
+    .news-list::before { content:""; position:absolute; left:87px; top:9px; bottom:3px; width:1px; background:#d4dfe7; }
+    .news-list li { position:relative; display:grid; grid-template-columns:72px 12px minmax(0,1fr); gap:10px; padding:0 0 13px; font-size:14px; line-height:1.6; }
+    .news-list li:last-child { padding-bottom:5px; }
+    .news-list time { color:#687783; font-size:12px; font-weight:500; font-variant-numeric:tabular-nums; padding-top:2px; white-space:nowrap; }
+    .news-node { position:relative; }
+    .news-node::before { content:""; position:absolute; top:9px; left:2px; width:7px; height:7px; border-radius:50%; background:#607f96; box-shadow:0 0 0 3px #fff; }
+    .news-node::after { content:""; position:absolute; top:12px; left:-15px; width:14px; height:1px; background:#d4dfe7; }
     .news-list p { margin:0; }
     .news-list strong { color:#285b85; font-weight:650; }
     .section-note { font-size:13px; color:var(--muted); margin:-2px 0 22px; }
@@ -94,6 +103,24 @@
     [hidden] { display:none !important; }
     .filter-status { font-size:13px; color:#66717a; margin-bottom:16px; }
     footer { margin-top:50px; padding-top:17px; border-top:1px solid var(--line); color:#858b8e; font-size:11px; }
+    body:has(.citation-dialog[open]) { overflow:hidden; }
+    .citation-dialog { width:min(720px,calc(100% - 32px)); max-height:calc(100dvh - 48px); padding:0; border:1px solid #d4dce2; border-radius:8px; color:var(--text); background:#fff; box-shadow:0 18px 70px #172b3a30; }
+    .citation-dialog::backdrop { background:#16243265; }
+    .citation-dialog[open] { display:flex; flex-direction:column; }
+    .citation-header { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:17px 22px 12px; }
+    .citation-header h2 { border:0; padding:0; margin:0; font-size:20px; }
+    .citation-close { border:0; background:transparent; color:#65717a; font-size:26px; line-height:1; cursor:pointer; padding:6px 8px; }
+    .citation-paper { padding:0 22px; margin:0 0 15px; font-size:13px; line-height:1.5; color:#5d6972; }
+    .citation-code { display:block; width:calc(100% - 44px); min-height:150px; height:290px; flex:1 1 auto; margin:0 22px; padding:16px; border:1px solid #e0e5e9; border-radius:4px; background:#f7f9fa; color:#303b44; font:13px/1.65 Consolas,"Courier New",monospace; resize:none; white-space:pre; overflow:auto; }
+    .citation-footer { display:flex; align-items:center; justify-content:flex-end; gap:12px; flex-wrap:wrap; padding:16px 22px 20px; }
+    .citation-status { flex:1 1 180px; font-size:12px; color:#596b79; margin:0; }
+    .citation-download,.citation-copy { display:inline-flex; align-items:center; justify-content:center; padding:8px 14px; border:1px solid #cbd5dd; border-radius:4px; font:500 13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; cursor:pointer; }
+    .citation-download { color:#365f7c; background:#fff; }
+    .citation-copy { background:#365f7c; border-color:#365f7c; color:#fff; }
+    .citation-download:hover { background:#f2f6f9; text-decoration:none; }
+    .citation-copy:hover { background:#294d68; }
+    .citation-copy:disabled { opacity:.65; cursor:wait; }
+    .citation-code:focus-visible { outline:2px solid var(--link); outline-offset:2px; }
     @media(max-width:1200px) {
       .publication-layout { grid-template-columns:minmax(0,1fr) 200px; gap:20px; }
       .publication { grid-template-columns:1fr; gap:4px; }
@@ -156,152 +183,259 @@
       <p class="role">Ph.D. Student</p>
       <p class="affiliation">University Duisburg-Essen</p>
       <p class="location">Germany</p>
-      <ul class="profile-links"><li><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en">Google Scholar</a></li></ul>
-      <!-- 在此添加已确认的公开邮箱、GitHub 等。照片文件为 assets/bohao-chu.jpg。 -->
+      <ul class="profile-links" aria-label="Academic and code profiles">
+        <li><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en" aria-label="Google Scholar" title="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 9 12 4 22 9 12 14 2 9Z"></path><path d="M6 11v6c3 3 9 3 12 0v-6M22 9v7"></path></svg>
+        </a></li>
+        <li><a href="https://github.com/chubohao" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.768-.244.768-.542 0-.267-.01-.975-.015-1.914-3.13.68-3.79-1.508-3.79-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.023-.7.077-.686.077-.686 1.13.08 1.724 1.16 1.724 1.16 1.006 1.725 2.64 1.227 3.284.938.102-.73.394-1.227.716-1.51-2.498-.284-5.124-1.25-5.124-5.566 0-1.23.44-2.234 1.16-3.022-.117-.284-.503-1.43.11-2.98 0 0 .945-.303 3.094 1.154A10.8 10.8 0 0 1 12 6.172c.956.005 1.919.13 2.817.38 2.148-1.457 3.092-1.154 3.092-1.154.614 1.55.228 2.696.112 2.98.721.788 1.158 1.792 1.158 3.022 0 4.327-2.63 5.279-5.136 5.558.404.35.765 1.04.765 2.096 0 1.514-.014 2.736-.014 3.107 0 .3.203.651.774.54A11.252 11.252 0 0 0 12 .75Z"></path></svg>
+        </a></li>
+      </ul>
+      <!-- 照片文件为 assets/bohao-chu.jpg。 -->
     </aside>
     <main id="main">
       <section id="about" aria-labelledby="about-heading">
-        <h2 id="about-heading">About Me</h2>
-        <p>I am a Ph.D. student at <strong>University Duisburg-Essen</strong>, Germany.</p>
+        <h2 id="about-heading">ABOUT ME</h2>
+        <p class="about-intro">I am a Ph.D. student at <strong>University Duisburg-Essen</strong>, Germany, working on natural language processing.</p>
         <!-- 下方研究简介根据 Scholar 论文主题概括，可按本人偏好修改。 -->
-        <p>My research focuses on natural language processing, with an emphasis on evidence grounding, reliable language model reasoning, and medical text generation.</p>
-        <ul class="interests">
-          <li>Evidence grounding and citation faithfulness</li>
-          <li>Medical summarization and question answering</li>
-          <li>Claim verification and language model evaluation</li>
-        </ul>
+        <p class="about-research">I study how language models ground their outputs in evidence, with a focus on reliable reasoning and medical text generation.</p>
       </section>
       <section id="news" aria-labelledby="news-heading">
-        <h2 id="news-heading">News</h2>
+        <h2 id="news-heading">NEWS</h2>
         <ul class="news-list">
-          <!-- 接收日期未提供，仅标注年份；新增消息时按时间倒序添加 li。 -->
+          <!-- 年月按用户给定的 2026-09 展示；新增消息时按时间倒序添加 li。 -->
           <li>
-            <time datetime="2026">2026</time>
+            <time datetime="2026-09">2026-09</time>
+            <span class="news-node" aria-hidden="true"></span>
             <p>Our paper <a href="https://aclanthology.org/2026.emnlp-main.314/">eTracer: Polarity-Aware Evidence Grounding</a> has been accepted to the 2026 Conference on Empirical Methods in Natural Language Processing (<strong>EMNLP 2026</strong>) for an <strong>oral presentation</strong>.</p>
           </li>
         </ul>
       </section>
       <section id="publications" aria-labelledby="publications-heading">
-        <h2 id="publications-heading">Publications</h2>
+        <h2 id="publications-heading">PUBLICATIONS</h2>
         <div class="publication-layout">
           <div class="publication-list">
             <p id="filter-status" class="filter-status" role="status" hidden></p>
             <div class="year-group"><h3>2026</h3><div><article class="publication" data-venue="EMNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.emnlp-main.314.pdf" aria-label="PDF: eTracer: Polarity-Aware Evidence Grounding">pdf</a> <a class="badge bib" href="bib/2026-eTracer-Polarity-Aware-Evidence-Grounding.bib" download aria-label="Download BibTeX: eTracer: Polarity-Aware Evidence Grounding">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.emnlp-main.314/" aria-label="Paper details: eTracer: Polarity-Aware Evidence Grounding">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.emnlp-main.314.pdf" aria-label="PDF: eTracer: Polarity-Aware Evidence Grounding">pdf</a> <a class="badge bib" href="bib/2026-eTracer-Polarity-Aware-Evidence-Grounding.bib" download data-citation="citation-Tyk-4Ss8FVUC" data-title="eTracer: Polarity-Aware Evidence Grounding" aria-label="View BibTeX: eTracer: Polarity-Aware Evidence Grounding">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.emnlp-main.314/" aria-label="Paper details: eTracer: Polarity-Aware Evidence Grounding">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.emnlp-main.314/">eTracer: Polarity-Aware Evidence Grounding</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Andrea Papenmeier</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing</cite></p>
       <p class="presentation">EMNLP 2026 · Oral</p>
       </div>
+      <template id="citation-Tyk-4Ss8FVUC">@inproceedings{chu-2026-Tyk-4Ss8FVUC,
+  title = {{eTracer: Polarity-Aware Evidence Grounding}},
+  author = {Chu, Bohao and Wang, Qianli and Damm, Hendrik and Zhang, Shuning and Wang, Hui and Papenmeier, Andrea and Lodde, Georg and Livingstone, Elisabeth and Friedrich, Christoph M and Fuhr, Norbert},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year = {2026},
+  url = {https://aclanthology.org/2026.emnlp-main.314/}
+}
+</template>
     </article>
 <article class="publication" data-venue="ACML">
-      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2601.03418" aria-label="PDF: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">pdf</a> <a class="badge bib" href="bib/2026-MAPLE-Medical-Aspect-Based-Summarization-with-Phrase-Level-Evidence.bib" download aria-label="Download BibTeX: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2601.03418" aria-label="Paper details: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2601.03418" aria-label="PDF: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">pdf</a> <a class="badge bib" href="bib/2026-MAPLE-Medical-Aspect-Based-Summarization-with-Phrase-Level-Evidence.bib" download data-citation="citation-Y0pCki6q_DkC" data-title="MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence" aria-label="View BibTeX: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2601.03418" aria-label="Paper details: MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://arxiv.org/abs/2601.03418">MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=fzxeDQ4AAAAJ&amp;hl=en">Tabea MG Pakull</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=aYVbd_UAAAAJ&amp;hl=en">Sameh Frihat</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>18th Asian Conference on Machine Learning, 2026</cite></p>
       <p class="presentation">ACML 2026 · Oral</p><p class="version"><a href="https://arxiv.org/abs/2601.03418">arXiv:2601.03418</a> · arXiv version</p>
       </div>
+      <template id="citation-Y0pCki6q_DkC">@article{chu-2026-Y0pCki6q_DkC,
+  title = {{MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence}},
+  author = {Chu, Bohao and Damm, Hendrik and Pakull, Tabea MG and Frihat, Sameh and Lodde, Georg and Livingstone, Elisabeth and Friedrich, Christoph M and Fuhr, Norbert},
+  journal = {arXiv preprint arXiv:2601.03418},
+  year = {2026},
+  url = {https://arxiv.org/abs/2601.03418}
+}
+</template>
     </article>
 <article class="publication" data-venue="EMNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.emnlp-main.829.pdf" aria-label="PDF: CoVer: Conflict-Aware Claim Verification">pdf</a> <a class="badge bib" href="bib/2026-CoVer-Conflict-Aware-Claim-Verification.bib" download aria-label="Download BibTeX: CoVer: Conflict-Aware Claim Verification">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.emnlp-main.829/" aria-label="Paper details: CoVer: Conflict-Aware Claim Verification">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.emnlp-main.829.pdf" aria-label="PDF: CoVer: Conflict-Aware Claim Verification">pdf</a> <a class="badge bib" href="bib/2026-CoVer-Conflict-Aware-Claim-Verification.bib" download data-citation="citation-WF5omc3nYNoC" data-title="CoVer: Conflict-Aware Claim Verification" aria-label="View BibTeX: CoVer: Conflict-Aware Claim Verification">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.emnlp-main.829/" aria-label="Paper details: CoVer: Conflict-Aware Claim Verification">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.emnlp-main.829/">CoVer: Conflict-Aware Claim Verification</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CT9wvxwAAAAJ&amp;hl=en">Dai Shi</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=C_1EKy0AAAAJ&amp;hl=en">Yuwei Chuai</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Yifan Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CuSwM4EAAAAJ&amp;hl=en">Jingruo Chen</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Simin Li</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=7Uy9RVYAAAAJ&amp;hl=en">Xin Yi</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hewu Li</span></p>
       <p class="venue"><cite>Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing</cite></p>
       <p class="presentation">EMNLP 2026 · Poster</p>
       </div>
+      <template id="citation-WF5omc3nYNoC">@inproceedings{chu-2026-WF5omc3nYNoC,
+  title = {{CoVer: Conflict-Aware Claim Verification}},
+  author = {Zhang, Shuning and Shi, Dai and Chu, Bohao and Wang, Hui and Chuai, Yuwei and Wang, Yifan and Chen, Jingruo and Li, Simin and Yi, Xin and Li, Hewu},
+  booktitle = {Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing},
+  year = {2026},
+  url = {https://aclanthology.org/2026.emnlp-main.829/}
+}
+</template>
     </article>
 <article class="publication" data-venue="Findings of EMNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.findings-emnlp.151.pdf" aria-label="PDF: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">pdf</a> <a class="badge bib" href="bib/2026-Macro-Enhancing-Multilingual-Counterfactual-Explanations-through-Alignment-as-Preference-Optimization.bib" download aria-label="Download BibTeX: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.findings-emnlp.151/" aria-label="Paper details: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.findings-emnlp.151.pdf" aria-label="PDF: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">pdf</a> <a class="badge bib" href="bib/2026-Macro-Enhancing-Multilingual-Counterfactual-Explanations-through-Alignment-as-Preference-Optimization.bib" download data-citation="citation-ufrVoPGSRksC" data-title="Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization" aria-label="View BibTeX: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.findings-emnlp.151/" aria-label="Paper details: Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.findings-emnlp.151/">Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=nwUJ_P8AAAAJ&amp;hl=en">Yilong Wang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=VjJUa5cAAAAJ&amp;hl=en">Yihong Liu</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=sBaq_RIAAAAJ&amp;hl=en">Jing Yang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=kOHpHZsAAAAJ&amp;hl=en">Simon Ostermann</a></p>
       <p class="venue"><cite>Findings of the Association for Computational Linguistics: EMNLP 2026</cite></p>
       
       </div>
+      <template id="citation-ufrVoPGSRksC">@inproceedings{chu-2026-ufrVoPGSRksC,
+  title = {{Macro: Enhancing Multilingual Counterfactual Explanations through Alignment-as-Preference Optimization}},
+  author = {Wang, Yilong and Wang, Qianli and Chu, Bohao and Liu, Yihong and Yang, Jing and Ostermann, Simon},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year = {2026},
+  url = {https://aclanthology.org/2026.findings-emnlp.151/}
+}
+</template>
     </article>
 <article class="publication" data-venue="BioNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.bionlp-1.62.pdf" aria-label="PDF: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">pdf</a> <a class="badge bib" href="bib/2026-VERICITE-Evaluating-Sentence-Level-Citation-Faithfulness-in-Retrieval-Augmented-Medical-Question-Answering.bib" download aria-label="Download BibTeX: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.bionlp-1.62/" aria-label="Paper details: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.bionlp-1.62.pdf" aria-label="PDF: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">pdf</a> <a class="badge bib" href="bib/2026-VERICITE-Evaluating-Sentence-Level-Citation-Faithfulness-in-Retrieval-Augmented-Medical-Question-Answering.bib" download data-citation="citation-W7OEmFMy1HYC" data-title="VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering" aria-label="View BibTeX: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.bionlp-1.62/" aria-label="Paper details: VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.bionlp-1.62/">VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering</a></h4>
       <p class="authors"><span class="unlinked-author">Yixian Ma</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Workshop on Biomedical Natural Language Processing (BioNLP), 2026</cite></p>
       
       </div>
+      <template id="citation-W7OEmFMy1HYC">@inproceedings{chu-2026-W7OEmFMy1HYC,
+  title = {{VERICITE: Evaluating Sentence-Level Citation Faithfulness in Retrieval-Augmented Medical Question Answering}},
+  author = {Ma, Yixian and Chu, Bohao and Fuhr, Norbert},
+  booktitle = {Workshop on Biomedical Natural Language Processing (BioNLP), 2026},
+  year = {2026},
+  url = {https://aclanthology.org/2026.bionlp-1.62/}
+}
+</template>
     </article>
 <article class="publication" data-venue="BioNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.bionlp-1.73.pdf" aria-label="PDF: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">pdf</a> <a class="badge bib" href="bib/2026-CrossDDI-Cross-Source-Evidence-Grounded-Drug-Drug-Interaction-Verification.bib" download aria-label="Download BibTeX: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.bionlp-1.73/" aria-label="Paper details: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.bionlp-1.73.pdf" aria-label="PDF: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">pdf</a> <a class="badge bib" href="bib/2026-CrossDDI-Cross-Source-Evidence-Grounded-Drug-Drug-Interaction-Verification.bib" download data-citation="citation-YsMSGLbcyi4C" data-title="CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification" aria-label="View BibTeX: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.bionlp-1.73/" aria-label="Paper details: CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.bionlp-1.73/">CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification</a></h4>
       <p class="authors"><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Workshop on Biomedical Natural Language Processing (BioNLP), 2026</cite></p>
       
       </div>
+      <template id="citation-YsMSGLbcyi4C">@inproceedings{chu-2026-YsMSGLbcyi4C,
+  title = {{CrossDDI: Cross-Source Evidence-Grounded Drug-Drug Interaction Verification}},
+  author = {Wang, Hui and Chu, Bohao and Fuhr, Norbert},
+  booktitle = {Workshop on Biomedical Natural Language Processing (BioNLP), 2026},
+  year = {2026},
+  url = {https://aclanthology.org/2026.bionlp-1.73/}
+}
+</template>
     </article>
 <article class="publication" data-venue="CL4Health">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.cl4health-1.42.pdf" aria-label="PDF: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">pdf</a> <a class="badge bib" href="bib/2026-WisPerMed-at-ArchEHR-QA-2026-Retrieval-Augmented-Prompting-for-Grounded-EHR-Question-Answering.bib" download aria-label="Download BibTeX: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.cl4health-1.42/" aria-label="Paper details: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2026.cl4health-1.42.pdf" aria-label="PDF: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">pdf</a> <a class="badge bib" href="bib/2026-WisPerMed-at-ArchEHR-QA-2026-Retrieval-Augmented-Prompting-for-Grounded-EHR-Question-Answering.bib" download data-citation="citation-eQOLeE2rZwMC" data-title="WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering" aria-label="View BibTeX: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">bib</a> <a class="badge abstract" href="https://aclanthology.org/2026.cl4health-1.42/" aria-label="Paper details: WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2026.cl4health-1.42.pdf">WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=S0kix20AAAAJ&amp;hl=en">Jan-Henning Büns</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=fzxeDQ4AAAAJ&amp;hl=en">Tabea MG Pakull</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=gPLIJzMAAAAJ&amp;hl=en">Felix Nensa</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Peter A Horn</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Third Workshop on Patient-Oriented Language Processing (CL4Health), Language Resources and Evaluation Conference (LREC), 2026</cite></p>
       
       </div>
+      <template id="citation-eQOLeE2rZwMC">@inproceedings{chu-2026-eQOLeE2rZwMC,
+  title = {{WisPerMed at ArchEHR-QA 2026: Retrieval-Augmented Prompting for Grounded EHR Question Answering}},
+  author = {Büns, Jan-Henning and Pakull, Tabea MG and Damm, Hendrik and Chu, Bohao and Friedrich, Christoph M and Nensa, Felix and Livingstone, Elisabeth and Horn, Peter A and Fuhr, Norbert},
+  booktitle = {Third Workshop on Patient-Oriented Language Processing (CL4Health), Language Resources and Evaluation Conference (LREC), 2026},
+  year = {2026},
+  url = {https://aclanthology.org/2026.cl4health-1.42.pdf}
+}
+</template>
     </article>
 <article class="publication" data-venue="arXiv">
-      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2610.33432" aria-label="PDF: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">pdf</a> <a class="badge bib" href="bib/2026-ConMem-Counterfactual-Multi-Scenario-Probing-for-Resolving-LLM-Memory-Misalignment.bib" download aria-label="Download BibTeX: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2610.33432" aria-label="Paper details: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2610.33432" aria-label="PDF: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">pdf</a> <a class="badge bib" href="bib/2026-ConMem-Counterfactual-Multi-Scenario-Probing-for-Resolving-LLM-Memory-Misalignment.bib" download data-citation="citation-hqOjcs7Dif8C" data-title="ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment" aria-label="View BibTeX: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2610.33432" aria-label="Paper details: ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://arxiv.org/abs/2610.33432">ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Tenghao Ji</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CuSwM4EAAAAJ&amp;hl=en">Jingruo Chen</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Eryue Xu</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=7Uy9RVYAAAAJ&amp;hl=en">Xin Yi</a></p>
       <p class="venue"><cite>arXiv:2610.33432, 2026</cite></p>
       
       </div>
+      <template id="citation-hqOjcs7Dif8C">@article{chu-2026-hqOjcs7Dif8C,
+  title = {{ConMem: Counterfactual Multi-Scenario Probing for Resolving LLM Memory Misalignment}},
+  author = {Zhang, Shuning and Ji, Tenghao and Chen, Jingruo and Xu, Eryue and Chu, Bohao and Yi, Xin},
+  journal = {arXiv:2610.33432, 2026},
+  year = {2026},
+  url = {https://arxiv.org/abs/2610.33432}
+}
+</template>
     </article>
 <article class="publication" data-venue="arXiv">
-      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2610.24851" aria-label="PDF: MisleadQA: Diagnosing LLM Failures under Misleading Context">pdf</a> <a class="badge bib" href="bib/2026-MisleadQA-Diagnosing-LLM-Failures-under-Misleading-Context.bib" download aria-label="Download BibTeX: MisleadQA: Diagnosing LLM Failures under Misleading Context">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2610.24851" aria-label="Paper details: MisleadQA: Diagnosing LLM Failures under Misleading Context">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2610.24851" aria-label="PDF: MisleadQA: Diagnosing LLM Failures under Misleading Context">pdf</a> <a class="badge bib" href="bib/2026-MisleadQA-Diagnosing-LLM-Failures-under-Misleading-Context.bib" download data-citation="citation-UebtZRa9Y70C" data-title="MisleadQA: Diagnosing LLM Failures under Misleading Context" aria-label="View BibTeX: MisleadQA: Diagnosing LLM Failures under Misleading Context">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2610.24851" aria-label="Paper details: MisleadQA: Diagnosing LLM Failures under Misleading Context">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://arxiv.org/abs/2610.24851">MisleadQA: Diagnosing LLM Failures under Misleading Context</a></h4>
       <p class="authors"><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>arXiv:2610.24851, 2026</cite></p>
       
       </div>
+      <template id="citation-UebtZRa9Y70C">@article{chu-2026-UebtZRa9Y70C,
+  title = {{MisleadQA: Diagnosing LLM Failures under Misleading Context}},
+  author = {Wang, Hui and Chu, Bohao and Wang, Qianli and Zhang, Shuning and Fuhr, Norbert},
+  journal = {arXiv:2610.24851, 2026},
+  year = {2026},
+  url = {https://arxiv.org/abs/2610.24851}
+}
+</template>
     </article>
 <article class="publication" data-venue="arXiv">
-      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2609.32496" aria-label="PDF: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">pdf</a> <a class="badge bib" href="bib/2026-Locally-Sound-Globally-Insufficient-The-Local-Global-Gap-in-Multi-Hop-Reasoning.bib" download aria-label="Download BibTeX: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2609.32496" aria-label="Paper details: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2609.32496" aria-label="PDF: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">pdf</a> <a class="badge bib" href="bib/2026-Locally-Sound-Globally-Insufficient-The-Local-Global-Gap-in-Multi-Hop-Reasoning.bib" download data-citation="citation-LkGwnXOMwfcC" data-title="Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning" aria-label="View BibTeX: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2609.32496" aria-label="Paper details: Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://arxiv.org/abs/2609.32496">Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>arXiv:2609.32496, 2026</cite></p>
       
       </div>
+      <template id="citation-LkGwnXOMwfcC">@article{chu-2026-LkGwnXOMwfcC,
+  title = {{Locally Sound, Globally Insufficient: The Local-Global Gap in Multi-Hop Reasoning}},
+  author = {Chu, Bohao and Damm, Hendrik and Wang, Qianli and Wang, Hui and Zhang, Shuning and Friedrich, Christoph M and Fuhr, Norbert},
+  journal = {arXiv:2609.32496, 2026},
+  year = {2026},
+  url = {https://arxiv.org/abs/2609.32496}
+}
+</template>
     </article>
 <article class="publication" data-venue="arXiv">
-      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2606.18268" aria-label="PDF: Towards Multi-Agent-Simulation-Based Community Note Evaluation">pdf</a> <a class="badge bib" href="bib/2026-Towards-Multi-Agent-Simulation-Based-Community-Note-Evaluation.bib" download aria-label="Download BibTeX: Towards Multi-Agent-Simulation-Based Community Note Evaluation">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2606.18268" aria-label="Paper details: Towards Multi-Agent-Simulation-Based Community Note Evaluation">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://arxiv.org/pdf/2606.18268" aria-label="PDF: Towards Multi-Agent-Simulation-Based Community Note Evaluation">pdf</a> <a class="badge bib" href="bib/2026-Towards-Multi-Agent-Simulation-Based-Community-Note-Evaluation.bib" download data-citation="citation-_FxGoFyzp5QC" data-title="Towards Multi-Agent-Simulation-Based Community Note Evaluation" aria-label="View BibTeX: Towards Multi-Agent-Simulation-Based Community Note Evaluation">bib</a> <a class="badge abstract" href="https://arxiv.org/abs/2606.18268" aria-label="Paper details: Towards Multi-Agent-Simulation-Based Community Note Evaluation">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://arxiv.org/abs/2606.18268">Towards Multi-Agent-Simulation-Based Community Note Evaluation</a></h4>
       <p class="authors"><span class="unlinked-author">Changxi Wen</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=C_1EKy0AAAAJ&amp;hl=en">Yuwei Chuai</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CT9wvxwAAAAJ&amp;hl=en">Dai Shi</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=7Uy9RVYAAAAJ&amp;hl=en">Xin Yi</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hewu Li</span></p>
       <p class="venue"><cite>arXiv:2606.18268, 2026</cite></p>
       
       </div>
+      <template id="citation-_FxGoFyzp5QC">@article{chu-2026-_FxGoFyzp5QC,
+  title = {{Towards Multi-Agent-Simulation-Based Community Note Evaluation}},
+  author = {Wen, Changxi and Zhang, Shuning and Chu, Bohao and Chuai, Yuwei and Wang, Hui and Shi, Dai and Yi, Xin and Li, Hewu},
+  journal = {arXiv:2606.18268, 2026},
+  year = {2026},
+  url = {https://arxiv.org/abs/2606.18268}
+}
+</template>
     </article></div></div>
 <div class="year-group"><h3>2025</h3><div><article class="publication" data-venue="EMNLP">
-      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2025.emnlp-main.43.pdf" aria-label="PDF: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">pdf</a> <a class="badge bib" href="bib/2025-TracSum-A-new-benchmark-for-aspect-based-summarization-with-sentence-level-traceability-in-medical-domain.bib" download aria-label="Download BibTeX: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">bib</a> <a class="badge abstract" href="https://aclanthology.org/2025.emnlp-main.43/" aria-label="Paper details: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://aclanthology.org/2025.emnlp-main.43.pdf" aria-label="PDF: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">pdf</a> <a class="badge bib" href="bib/2025-TracSum-A-new-benchmark-for-aspect-based-summarization-with-sentence-level-traceability-in-medical-domain.bib" download data-citation="citation-IjCSPb-OGe4C" data-title="TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain" aria-label="View BibTeX: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">bib</a> <a class="badge abstract" href="https://aclanthology.org/2025.emnlp-main.43/" aria-label="Paper details: TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://aclanthology.org/2025.emnlp-main.43/">TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=z6pK1pMAAAAJ&amp;hl=en">Meijie Li</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=aYVbd_UAAAAJ&amp;hl=en">Sameh Frihat</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Chengyu Gu</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing</cite></p>
       <p class="presentation">EMNLP 2025 · Poster</p>
       </div>
+      <template id="citation-IjCSPb-OGe4C">@inproceedings{chu-2025-IjCSPb-OGe4C,
+  title = {{TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain}},
+  author = {Chu, Bohao and Li, Meijie and Frihat, Sameh and Gu, Chengyu and Lodde, Georg and Livingstone, Elisabeth and Fuhr, Norbert},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  year = {2025},
+  url = {https://aclanthology.org/2025.emnlp-main.43/}
+}
+</template>
     </article></div></div>
 <div class="year-group"><h3>2021</h3><div><article class="publication" data-venue="Logistics Journal">
-      <div class="paper-resources"><a class="badge pdf" href="https://proc.logistics-journal.de/article/download/1026/997" aria-label="PDF: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">pdf</a> <a class="badge bib" href="bib/2021-Feature-fusion-algorithm-based-on-modular-scalable-integrated-sensor-behavior-recognition.bib" download aria-label="Download BibTeX: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">bib</a> <a class="badge abstract" href="https://proc.logistics-journal.de/article/view/1026" aria-label="Paper details: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">abs</a></div>
+      <div class="paper-resources"><a class="badge pdf" href="https://proc.logistics-journal.de/article/download/1026/997" aria-label="PDF: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">pdf</a> <a class="badge bib" href="bib/2021-Feature-fusion-algorithm-based-on-modular-scalable-integrated-sensor-behavior-recognition.bib" download data-citation="citation-u5HHmVD_uO8C" data-title="Feature fusion algorithm based on modular scalable integrated sensor behavior recognition" aria-label="View BibTeX: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">bib</a> <a class="badge abstract" href="https://proc.logistics-journal.de/article/view/1026" aria-label="Paper details: Feature fusion algorithm based on modular scalable integrated sensor behavior recognition">abs</a></div>
       <div class="paper-description">
       <h4><a href="https://proc.logistics-journal.de/article/view/1026">Feature fusion algorithm based on modular scalable integrated sensor behavior recognition</a></h4>
       <p class="authors"><span class="unlinked-author">Fuyin Wei</span><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Fei Xiang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=hNzDvhsAAAAJ&amp;hl=en">Bernd Noche</a></p>
       <p class="venue"><cite>Logistics Journal: Proceedings, issue 17, 2021</cite></p>
       
       </div>
+      <template id="citation-u5HHmVD_uO8C">@article{chu-2021-u5HHmVD_uO8C,
+  title = {{Feature fusion algorithm based on modular scalable integrated sensor behavior recognition}},
+  author = {Wei, Fuyin and Xiang, Fei and Chu, Bohao and Noche, Bernd},
+  journal = {Logistics Journal: Proceedings, issue 17, 2021},
+  year = {2021},
+  url = {https://proc.logistics-journal.de/article/view/1026}
+}
+</template>
     </article></div></div>
           </div>
           <aside class="right-sidebar" aria-label="Publication overview">
@@ -314,8 +448,74 @@
       <footer>© Bohao Chu</footer>
     </main>
   </div>
+  <dialog class="citation-dialog" id="citation-dialog" aria-labelledby="citation-heading" aria-describedby="citation-paper">
+    <div class="citation-header"><h2 id="citation-heading">BibTeX</h2><button type="button" class="citation-close" aria-label="Close citation">×</button></div>
+    <p class="citation-paper" id="citation-paper"></p>
+    <textarea class="citation-code" id="citation-code" aria-label="BibTeX citation" readonly spellcheck="false" wrap="off"></textarea>
+    <div class="citation-footer">
+      <p class="citation-status" id="citation-status" role="status" aria-live="polite"></p>
+      <a class="citation-download" id="citation-download" download>Download .bib</a>
+      <button class="citation-copy" id="citation-copy" type="button">Copy BibTeX</button>
+    </div>
+  </dialog>
 <script>
 (() => {
+  const citationDialog = document.getElementById('citation-dialog');
+  const citationCode = document.getElementById('citation-code');
+  const citationPaper = document.getElementById('citation-paper');
+  const citationStatus = document.getElementById('citation-status');
+  const citationDownload = document.getElementById('citation-download');
+  const citationCopy = document.getElementById('citation-copy');
+  let citationTrigger = null;
+  document.querySelectorAll('a.bib[data-citation]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || typeof citationDialog.showModal !== 'function') return;
+      const template = document.getElementById(link.dataset.citation);
+      if (!template) return;
+      event.preventDefault();
+      citationTrigger = link;
+      citationCode.value = template.content.textContent;
+      citationPaper.textContent = link.dataset.title;
+      citationDownload.href = link.getAttribute('href');
+      citationStatus.textContent = '';
+      citationCopy.textContent = 'Copy BibTeX';
+      citationDialog.showModal();
+      citationCopy.focus();
+    });
+  });
+  citationDialog.querySelector('.citation-close').addEventListener('click', () => citationDialog.close());
+  let backdropPress = false;
+  function outsideDialog(event) {
+    const box = citationDialog.getBoundingClientRect();
+    return event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
+  }
+  citationDialog.addEventListener('pointerdown', event => { backdropPress = event.target === citationDialog && outsideDialog(event); });
+  citationDialog.addEventListener('click', event => {
+    if (backdropPress && event.target === citationDialog && outsideDialog(event)) citationDialog.close();
+    backdropPress = false;
+  });
+  citationDialog.addEventListener('close', () => { if (citationTrigger) citationTrigger.focus(); });
+  citationCopy.addEventListener('click', async () => {
+    const text = citationCode.value;
+    const trigger = citationTrigger;
+    citationCopy.disabled = true;
+    let copied = false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); copied = true; }
+    } catch (_) { /* Fall back to selected text on local files or denied clipboard access. */ }
+    if (citationDialog.open && trigger === citationTrigger) {
+      if (!copied) {
+        citationCode.focus();
+        citationCode.select();
+        try { copied = document.execCommand('copy'); } catch (_) { copied = false; }
+      }
+      citationStatus.textContent = copied ? 'Citation copied.' : 'Copy unavailable. Text selected — press Ctrl+C or ⌘C.';
+      citationCopy.textContent = copied ? 'Copied' : 'Copy BibTeX';
+      citationCopy.disabled = false;
+      if (copied) citationCopy.focus();
+    }
+    citationCopy.disabled = false;
+  });
   const navLinks = [...document.querySelectorAll('.nav a')];
   const sections = [...document.querySelectorAll('main > section[id]')];
   function setActiveNav(id) {
