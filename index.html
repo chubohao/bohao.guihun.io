@@ -17,14 +17,14 @@
     .skip { position:absolute; top:-100px; left:20px; background:#fff; padding:10px; z-index:5; }
     .skip:focus { top:8px; }
     .masthead { position:sticky; top:0; z-index:20; border-bottom:1px solid #dce3e8; background:#fff; }
-    .nav { max-width:1500px; margin:auto; padding:0 32px; display:flex; align-items:stretch; justify-content:center; gap:12px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1.15px; text-align:center; }
+    .nav { max-width:1120px; margin:auto; padding:0 28px; display:flex; align-items:stretch; justify-content:center; gap:12px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:1.15px; text-align:center; }
     .nav a { position:relative; display:flex; align-items:center; padding:18px 18px 17px; color:#69737b; transition:color .16s ease,background-color .16s ease; }
     .nav a::after { content:""; position:absolute; bottom:-1px; left:18px; right:18px; height:2px; background:#365f7c; transform:scaleX(0); transition:transform .16s ease; }
     .nav a:hover { color:#233f53; background:#f5f7f9; text-decoration:none; }
     .nav a[aria-current="location"] { color:#233f53; }
     .nav a[aria-current="location"]::after { transform:scaleX(1); }
     .nav a:focus-visible { outline-offset:-4px; }
-    .layout { max-width:1500px; margin:0 auto; display:grid; grid-template-columns:180px minmax(0,1fr); gap:32px; padding:32px 32px 72px; }
+    .layout { max-width:1120px; margin:0 auto; display:grid; grid-template-columns:168px minmax(0,1fr); gap:40px; padding:40px 28px 80px; }
     .profile { position:sticky; top:86px; align-self:start; }
     .profile-photo { display:block; width:128px; height:128px; object-fit:cover; border-radius:50%; margin:0 0 22px; }
     .profile h1 { font-size:25px; line-height:1.3; font-weight:650; letter-spacing:-.5px; margin:0 0 14px; }
@@ -53,20 +53,16 @@
     h2 { font-size:22px; line-height:1.4; font-weight:600; letter-spacing:-.35px; padding-bottom:9px; margin:0 0 16px; border-bottom:1px solid var(--line); }
     main > section > h2 { font-size:16px; font-weight:650; letter-spacing:1.35px; text-transform:uppercase; color:#364450; }
     p { margin:0 0 13px; }
-    .news-list { position:relative; list-style:none; margin:0; padding:0; }
-    .news-list::before { content:""; position:absolute; left:87px; top:9px; bottom:3px; width:1px; background:#d4dfe7; }
-    .news-list li { position:relative; display:grid; grid-template-columns:72px 12px minmax(0,1fr); gap:10px; padding:0 0 13px; font-size:14px; line-height:1.6; }
-    .news-list li:last-child { padding-bottom:5px; }
-    .news-list time { color:#687783; font-size:12px; font-weight:500; font-variant-numeric:tabular-nums; padding-top:2px; white-space:nowrap; }
-    .news-node { position:relative; }
-    .news-node::before { content:""; position:absolute; top:9px; left:2px; width:7px; height:7px; border-radius:50%; background:#607f96; box-shadow:0 0 0 3px #fff; }
-    .news-node::after { content:""; position:absolute; top:12px; left:-15px; width:14px; height:1px; background:#d4dfe7; }
+    .news-list { list-style:none; margin:0; padding:0; }
+    .news-list li { display:grid; grid-template-columns:72px minmax(0,1fr); gap:18px; padding:0 0 18px; font-size:14.5px; line-height:1.65; }
+    .news-list li:last-child { padding-bottom:2px; }
+    .news-list time { color:#687783; font-size:13px; font-weight:500; font-variant-numeric:tabular-nums; padding-top:1px; white-space:nowrap; }
     .news-list p { margin:0; }
     .news-list strong { color:#285b85; font-weight:650; }
     .section-note { font-size:13px; color:var(--muted); margin:-2px 0 22px; }
-    .year-group { margin-top:27px; }
-    .year-group h3 { font-size:27px; color:#20252a; font-weight:400; line-height:1.3; margin:0 0 14px; }
-    .publication { display:grid; grid-template-columns:126px minmax(0,1fr); gap:16px; margin:0 0 22px; }
+    .year-group { margin-top:42px; }
+    .year-group h3 { font-size:27px; color:#20252a; font-weight:400; line-height:1.3; margin:0 0 20px; }
+    .publication { display:grid; grid-template-columns:126px minmax(0,1fr); gap:16px; margin:0 0 36px; }
     .publication:last-child { margin-bottom:0; }
     .paper-resources { display:flex; flex-wrap:wrap; align-content:flex-start; gap:4px; padding-top:3px; }
     .badge { display:inline-block; border-radius:5px; padding:1px 7px 2px; font:700 12px/1.5 Arial, sans-serif; text-align:center; text-decoration:none; }
@@ -85,24 +81,27 @@
     .publication .presentation { margin-top:6px; font-size:13px; font-weight:400; line-height:1.6; color:#69737c; }
     .publication .version { font-size:12px; color:#666; margin-top:3px; }
     .unlinked-author { color:#555d64; }
-    .publication-layout { display:grid; grid-template-columns:minmax(0,1fr) 228px; gap:28px; align-items:start; }
+    .publication-layout { display:grid; grid-template-columns:minmax(0,1fr) 188px; column-gap:40px; row-gap:22px; align-items:start; }
+    .venue-bar { grid-column:1 / -1; }
+    .venue-bar h3 { margin:0 0 8px; padding:0; border:0; background:none; font-size:13px; font-weight:650; letter-spacing:1.1px; text-transform:uppercase; color:#364450; }
+    .venue-row { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 16px; }
     .publication-list { min-width:0; }
-    .publication-list .year-group:first-child { margin-top:0; }
+    .publication-list .year-group:first-child { margin-top:8px; }
     .right-sidebar { min-width:0; }
-    .sidebar-panel { border:1px solid #d1d5d8; border-radius:6px; overflow:hidden; margin:0 0 14px; }
-    .sidebar-panel h3 { margin:0; padding:8px 14px; background:#f7f7f7; border-bottom:1px solid #d1d5d8; font-size:21px; font-weight:400; }
+    .sidebar-panel { margin:0; }
+    .sidebar-panel h3 { margin:0 0 4px; padding:0 0 7px; background:none; border:0; border-bottom:1px solid var(--line); font-size:13px; font-weight:650; letter-spacing:1.1px; text-transform:uppercase; color:#364450; }
     .stat-list { margin:0; padding:0; list-style:none; }
-    .stat-list li { padding:8px 14px; border-bottom:1px solid #e3e6e8; display:flex; align-items:baseline; gap:8px; font-size:14px; line-height:1.45; }
+    .stat-list li { padding:7px 0; border-bottom:1px solid #eceff1; display:flex; align-items:baseline; gap:10px; font-size:13.5px; line-height:1.45; }
     .stat-list li:last-child { border-bottom:0; }
     .stat-list a,.stat-list .unlinked-author { flex:1; min-width:0; }
-    .count { display:inline-block; flex:none; color:#17202a; font:600 12px/1.5 Arial,sans-serif; background:#e1e5e9; border-radius:4px; padding:0 6px; }
-    .more-authors summary { padding:7px 14px; background:#eaf3f8; color:#286482; cursor:pointer; font-size:13px; }
-    .more-authors[open] summary { border-bottom:1px solid #d1d5d8; }
-    .venue-filter { display:flex; justify-content:space-between; align-items:baseline; gap:8px; width:100%; border:0; padding:0; font:inherit; color:var(--link); background:none; text-align:left; cursor:pointer; }
-    .venue-filter[aria-pressed="true"] { font-weight:700; color:#193b58; }
+    .count { display:inline-block; flex:none; color:#8a9298; font:500 12px/1.5 Arial,sans-serif; font-variant-numeric:tabular-nums; background:none; padding:0; }
+    .more-authors summary { padding:8px 0 2px; background:none; color:var(--link); cursor:pointer; font-size:13px; }
+    .more-authors[open] summary { border-bottom:0; }
+    .venue-filter { display:inline-flex; align-items:baseline; gap:5px; width:auto; border:0; padding:0; font:inherit; font-size:14px; color:var(--link); background:none; text-align:left; cursor:pointer; }
+    .venue-filter[aria-pressed="true"],.venue-row:not(:has(.venue-filter[aria-pressed="true"])) .reset-filter { font-weight:700; color:#193b58; }
     button:focus-visible,summary:focus-visible { outline:2px solid var(--link); outline-offset:3px; }
-    .reset-filter { width:100%; border:0; border-top:1px solid #d1d5d8; padding:8px; background:#eaf3f8; color:#286482; font:inherit; font-size:13px; cursor:pointer; }
-    .sidebar-note { font-size:11px; color:#747c82; line-height:1.5; }
+    .reset-filter { width:auto; border:0; padding:0; background:none; color:var(--link); font:inherit; font-size:14px; cursor:pointer; }
+    .sidebar-note { margin:14px 0 0; font-size:12px; color:#747c82; line-height:1.55; }
     [hidden] { display:none !important; }
     .filter-status { font-size:13px; color:#66717a; margin-bottom:16px; }
     footer { margin-top:50px; padding-top:17px; border-top:1px solid var(--line); color:#858b8e; font-size:11px; }
@@ -125,19 +124,15 @@
     .citation-copy:disabled { opacity:.65; cursor:wait; }
     .citation-code:focus-visible,.abstract-body:focus-visible { outline:2px solid var(--link); outline-offset:2px; }
     .abstract-body { flex:1 1 auto; min-height:140px; max-height:min(420px,50dvh); margin:0 22px; padding:16px; border:1px solid #e0e5e9; border-radius:4px; background:#f7f9fa; color:#303b44; font-size:15px; line-height:1.7; white-space:pre-wrap; overflow:auto; }
-    @media(max-width:1200px) {
-      .publication-layout { grid-template-columns:minmax(0,1fr) 200px; gap:20px; }
-      .publication { grid-template-columns:1fr; gap:4px; }
+    @media(max-width:1040px) {
+      .publication-layout { grid-template-columns:1fr; }
+      .publication { grid-template-columns:1fr; gap:6px; }
       .publication h4 { font-size:16px; }
-      .publication p { font-size:14px; }
+      .publication p { font-size:14.5px; }
     }
     @media(max-width:900px) {
-      .layout { grid-template-columns:185px minmax(0,1fr); gap:35px; padding-left:26px; padding-right:26px; }
-      .nav { padding-left:26px; padding-right:26px; }
-      .year-group { grid-template-columns:1fr; gap:12px; }
-      .publication-layout { display:flex; flex-direction:column; }
-      .right-sidebar { width:100%; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-      .sidebar-note { grid-column:1/-1; }
+      .layout { grid-template-columns:160px minmax(0,1fr); gap:28px; padding-left:24px; padding-right:24px; }
+      .nav { padding-left:24px; padding-right:24px; }
     }
     @media(max-width:640px) {
       .nav { padding:0 8px; gap:2px; font-size:10px; letter-spacing:.65px; flex-wrap:wrap; }
@@ -151,7 +146,8 @@
       .profile-links { margin-top:14px; }
       .profile-links li { margin-bottom:0; }
       h2 { font-size:21px; }
-      .publication { grid-template-columns:1fr; gap:5px; margin-bottom:25px; }
+      .publication { grid-template-columns:1fr; gap:5px; margin-bottom:32px; }
+      .news-list li { grid-template-columns:64px minmax(0,1fr); gap:12px; }
       .publication h4 { font-size:16px; }
       .publication p { font-size:14px; }
       .paper-resources { padding-top:0; }
@@ -213,12 +209,10 @@
           <!-- 年月按用户给定的 2026-09 展示；新增消息时按时间倒序添加 li。 -->
           <li>
             <time datetime="2026-09">2026-09</time>
-            <span class="news-node" aria-hidden="true"></span>
             <p>Our paper <a href="https://aclanthology.org/2026.emnlp-main.314/">eTracer: Polarity-Aware Evidence Grounding</a> has been accepted to the 2026 Conference on Empirical Methods in Natural Language Processing (<strong>EMNLP 2026</strong>) for an <strong>oral presentation</strong>.</p>
           </li>
           <li>
             <time datetime="2026-09">2026-09</time>
-            <span class="news-node" aria-hidden="true"></span>
             <p>Our paper <a href="https://arxiv.org/abs/2601.03418">MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence</a> has been accepted to the 18th Asian Conference on Machine Learning (<strong>ACML 2026</strong>).</p>
           </li>
         </ul>
@@ -226,6 +220,20 @@
       <section id="publications" aria-labelledby="publications-heading">
         <h2 id="publications-heading">PUBLICATIONS</h2>
         <div class="publication-layout">
+          <div class="venue-bar">
+            <h3>Venues</h3>
+            <div class="venue-row">
+              <button class="reset-filter" type="button">All</button>
+              <button type="button" class="venue-filter" data-filter="arXiv" aria-pressed="false">arXiv<span class="count">4</span></button>
+              <button type="button" class="venue-filter" data-filter="EMNLP" aria-pressed="false">EMNLP<span class="count">3</span></button>
+              <button type="button" class="venue-filter" data-filter="BioNLP" aria-pressed="false">BioNLP<span class="count">2</span></button>
+              <button type="button" class="venue-filter" data-filter="ACML" aria-pressed="false">ACML<span class="count">1</span></button>
+              <button type="button" class="venue-filter" data-filter="CL4Health" aria-pressed="false">CL4Health<span class="count">1</span></button>
+              <button type="button" class="venue-filter" data-filter="Findings of EMNLP" aria-pressed="false">Findings of EMNLP<span class="count">1</span></button>
+              <button type="button" class="venue-filter" data-filter="Logistics Journal" aria-pressed="false">Logistics Journal<span class="count">1</span></button>
+            </div>
+            <p class="sidebar-note">Counts refer to the 13 papers listed here. MAPLE is counted under ACML; its available version is on arXiv.</p>
+          </div>
           <div class="publication-list">
             <p id="filter-status" class="filter-status" role="status" hidden></p>
             <div class="year-group"><h3>2026</h3><div><article class="publication" data-venue="EMNLP">
@@ -588,8 +596,6 @@
           </div>
           <aside class="right-sidebar" aria-label="Publication overview">
             <div class="sidebar-panel"><h3>Co-authors</h3><ul class="stat-list"><li><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a><span class="count" aria-label="8 shared papers">8</span></li><li><span class="unlinked-author">Hui Wang</span><span class="count" aria-label="6 shared papers">6</span></li><li><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="count" aria-label="6 shared papers">6</span></li><li><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="count" aria-label="4 shared papers">4</span></li><li><span class="unlinked-author">Elisabeth Livingstone</span><span class="count" aria-label="4 shared papers">4</span></li><li><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="count" aria-label="4 shared papers">4</span></li></ul><details class="more-authors"><summary>Show all co-authors</summary><ul class="stat-list"><li><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="count" aria-label="4 shared papers">4</span></li><li><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="count" aria-label="3 shared papers">3</span></li><li><a href="https://scholar.google.com/citations?user=7Uy9RVYAAAAJ&amp;hl=en">Xin Yi</a><span class="count" aria-label="3 shared papers">3</span></li><li><a href="https://scholar.google.com/citations?user=CT9wvxwAAAAJ&amp;hl=en">Dai Shi</a><span class="count" aria-label="2 shared papers">2</span></li><li><span class="unlinked-author">Hewu Li</span><span class="count" aria-label="2 shared papers">2</span></li><li><a href="https://scholar.google.com/citations?user=CuSwM4EAAAAJ&amp;hl=en">Jingruo Chen</a><span class="count" aria-label="2 shared papers">2</span></li><li><a href="https://scholar.google.com/citations?user=aYVbd_UAAAAJ&amp;hl=en">Sameh Frihat</a><span class="count" aria-label="2 shared papers">2</span></li><li><a href="https://scholar.google.com/citations?user=fzxeDQ4AAAAJ&amp;hl=en">Tabea MG Pakull</a><span class="count" aria-label="2 shared papers">2</span></li><li><a href="https://scholar.google.com/citations?user=C_1EKy0AAAAJ&amp;hl=en">Yuwei Chuai</a><span class="count" aria-label="2 shared papers">2</span></li><li><span class="unlinked-author">Andrea Papenmeier</span><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=hNzDvhsAAAAJ&amp;hl=en">Bernd Noche</a><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Changxi Wen</span><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Chengyu Gu</span><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Eryue Xu</span><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Fei Xiang</span><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=gPLIJzMAAAAJ&amp;hl=en">Felix Nensa</a><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Fuyin Wei</span><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=S0kix20AAAAJ&amp;hl=en">Jan-Henning Büns</a><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=sBaq_RIAAAAJ&amp;hl=en">Jing Yang</a><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=z6pK1pMAAAAJ&amp;hl=en">Meijie Li</a><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Peter A Horn</span><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Simin Li</span><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=kOHpHZsAAAAJ&amp;hl=en">Simon Ostermann</a><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Tenghao Ji</span><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Yifan Wang</span><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=VjJUa5cAAAAJ&amp;hl=en">Yihong Liu</a><span class="count" aria-label="1 shared papers">1</span></li><li><a href="https://scholar.google.com/citations?user=nwUJ_P8AAAAJ&amp;hl=en">Yilong Wang</a><span class="count" aria-label="1 shared papers">1</span></li><li><span class="unlinked-author">Yixian Ma</span><span class="count" aria-label="1 shared papers">1</span></li></ul></details></div>
-            <div class="sidebar-panel"><h3>Venues</h3><ul class="stat-list"><li><button type="button" class="venue-filter" data-filter="arXiv" aria-pressed="false">arXiv<span class="count">4</span></button></li><li><button type="button" class="venue-filter" data-filter="EMNLP" aria-pressed="false">EMNLP<span class="count">3</span></button></li><li><button type="button" class="venue-filter" data-filter="BioNLP" aria-pressed="false">BioNLP<span class="count">2</span></button></li><li><button type="button" class="venue-filter" data-filter="ACML" aria-pressed="false">ACML<span class="count">1</span></button></li><li><button type="button" class="venue-filter" data-filter="CL4Health" aria-pressed="false">CL4Health<span class="count">1</span></button></li><li><button type="button" class="venue-filter" data-filter="Findings of EMNLP" aria-pressed="false">Findings of EMNLP<span class="count">1</span></button></li><li><button type="button" class="venue-filter" data-filter="Logistics Journal" aria-pressed="false">Logistics Journal<span class="count">1</span></button></li></ul><button class="reset-filter" type="button">Show all papers</button></div>
-            <p class="sidebar-note">Counts refer to the 13 papers listed here. MAPLE is counted under ACML; its available version is on arXiv.</p>
           </aside>
         </div>
       </section>
