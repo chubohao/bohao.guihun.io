@@ -17,9 +17,9 @@
     .skip { position:absolute; top:-100px; left:20px; background:#fff; padding:10px; z-index:5; }
     .skip:focus { top:8px; }
     .masthead { border-bottom:1px solid var(--line); background:#fff; }
-    .nav { max-width:1500px; margin:auto; padding:19px 32px; display:flex; align-items:center; gap:32px; font-size:14px; }
+    .nav { max-width:1500px; margin:auto; padding:19px 32px; display:flex; align-items:center; justify-content:center; gap:32px; font-size:14px; text-transform:uppercase; letter-spacing:.6px; text-align:center; }
     .nav a { color:#62686d; }
-    .nav .home { font-weight:600; margin-right:28px; color:var(--text); }
+    .nav .home { font-weight:600; color:var(--text); }
     .layout { max-width:1500px; margin:0 auto; display:grid; grid-template-columns:180px minmax(0,1fr); gap:32px; padding:42px 32px 72px; }
     .profile { position:sticky; top:40px; align-self:start; }
     .profile-photo { display:block; width:128px; height:128px; object-fit:cover; border-radius:50%; margin:0 0 22px; }
@@ -61,8 +61,7 @@
     .author-separator { color:#555; padding:0 2px; }
     .venue { color:#41474c; }
     cite { font-style:normal; }
-    .publication .presentation { margin-top:5px; font-size:13px; font-weight:500; color:#34383b; }
-    .presentation strong { margin-left:5px; font-weight:700; color:#285b85; }
+    .publication .presentation { margin-top:6px; font-size:13px; font-weight:400; line-height:1.6; color:#69737c; }
     .publication .version { font-size:12px; color:#666; margin-top:3px; }
     .unlinked-author { color:#555d64; }
     .publication-layout { display:grid; grid-template-columns:minmax(0,1fr) 228px; gap:28px; align-items:start; }
@@ -183,7 +182,7 @@
       <h4><a href="https://aclanthology.org/2026.emnlp-main.314/">eTracer: Polarity-Aware Evidence Grounding</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=dKmUzp4AAAAJ&amp;hl=en">Qianli Wang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Andrea Papenmeier</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing</cite></p>
-      <p class="presentation">EMNLP 2026 <strong>Oral</strong></p>
+      <p class="presentation">EMNLP 2026 · Oral</p>
       </div>
     </article>
 <article class="publication" data-venue="ACML">
@@ -192,7 +191,7 @@
       <h4><a href="https://arxiv.org/abs/2601.03418">MAPLE: Medical Aspect-Based Summarization with Phrase-Level Evidence</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=d4dpHMkAAAAJ&amp;hl=en">Hendrik Damm</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=fzxeDQ4AAAAJ&amp;hl=en">Tabea MG Pakull</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=aYVbd_UAAAAJ&amp;hl=en">Sameh Frihat</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=cBJs78QAAAAJ&amp;hl=en">Christoph M Friedrich</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>18th Asian Conference on Machine Learning, 2026</cite></p>
-      <p class="presentation">ACML 2026 <strong>Oral</strong></p><p class="version"><a href="https://arxiv.org/abs/2601.03418">arXiv:2601.03418</a> · arXiv version</p>
+      <p class="presentation">ACML 2026 · Oral</p><p class="version"><a href="https://arxiv.org/abs/2601.03418">arXiv:2601.03418</a> · arXiv version</p>
       </div>
     </article>
 <article class="publication" data-venue="EMNLP">
@@ -201,7 +200,7 @@
       <h4><a href="https://aclanthology.org/2026.emnlp-main.829/">CoVer: Conflict-Aware Claim Verification</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=MOmHKCAAAAAJ&amp;hl=en">Shuning Zhang</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CT9wvxwAAAAJ&amp;hl=en">Dai Shi</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hui Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=C_1EKy0AAAAJ&amp;hl=en">Yuwei Chuai</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Yifan Wang</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=CuSwM4EAAAAJ&amp;hl=en">Jingruo Chen</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Simin Li</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=7Uy9RVYAAAAJ&amp;hl=en">Xin Yi</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Hewu Li</span></p>
       <p class="venue"><cite>Proceedings of the 2026 Conference on Empirical Methods in Natural Language Processing</cite></p>
-      <p class="presentation">EMNLP 2026 <strong>Poster</strong></p>
+      <p class="presentation">EMNLP 2026 · Poster</p>
       </div>
     </article>
 <article class="publication" data-venue="Findings of EMNLP">
@@ -282,7 +281,7 @@
       <h4><a href="https://aclanthology.org/2025.emnlp-main.43/">TracSum: A new benchmark for aspect-based summarization with sentence-level traceability in medical domain</a></h4>
       <p class="authors"><a href="https://scholar.google.com/citations?user=ktf81WEAAAAJ&amp;hl=en"><strong>Bohao Chu</strong></a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=z6pK1pMAAAAJ&amp;hl=en">Meijie Li</a><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=aYVbd_UAAAAJ&amp;hl=en">Sameh Frihat</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Chengyu Gu</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=uxmHsicAAAAJ&amp;hl=en">Georg Lodde</a><span class="author-separator" aria-hidden="true"> | </span><span class="unlinked-author">Elisabeth Livingstone</span><span class="author-separator" aria-hidden="true"> | </span><a href="https://scholar.google.com/citations?user=p53Ht7UAAAAJ&amp;hl=en">Norbert Fuhr</a></p>
       <p class="venue"><cite>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing</cite></p>
-      <p class="presentation">EMNLP 2025 <strong>Poster</strong></p>
+      <p class="presentation">EMNLP 2025 · Poster</p>
       </div>
     </article></div></div>
 <div class="year-group"><h3>2021</h3><div><article class="publication" data-venue="Logistics Journal">
